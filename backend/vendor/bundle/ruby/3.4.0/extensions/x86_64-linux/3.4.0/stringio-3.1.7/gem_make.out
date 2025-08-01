@@ -1,0 +1,19 @@
+current directory: /home/yeab/Desktop/fev-hos/backend/vendor/bundle/ruby/3.4.0/gems/stringio-3.1.7/ext/stringio
+/usr/bin/ruby extconf.rb
+checking for rb_io_mode_t in ruby/io.h... no
+creating Makefile
+
+current directory: /home/yeab/Desktop/fev-hos/backend/vendor/bundle/ruby/3.4.0/gems/stringio-3.1.7/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20250801-38763-vlf1wx sitelibdir\=./.gem.20250801-38763-vlf1wx clean
+
+current directory: /home/yeab/Desktop/fev-hos/backend/vendor/bundle/ruby/3.4.0/gems/stringio-3.1.7/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20250801-38763-vlf1wx sitelibdir\=./.gem.20250801-38763-vlf1wx
+compiling stringio.c
+linking shared-object stringio.so
+
+current directory: /home/yeab/Desktop/fev-hos/backend/vendor/bundle/ruby/3.4.0/gems/stringio-3.1.7/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20250801-38763-vlf1wx sitelibdir\=./.gem.20250801-38763-vlf1wx install
+/usr/bin/install -c -m 0755 stringio.so ./.gem.20250801-38763-vlf1wx
+
+current directory: /home/yeab/Desktop/fev-hos/backend/vendor/bundle/ruby/3.4.0/gems/stringio-3.1.7/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20250801-38763-vlf1wx sitelibdir\=./.gem.20250801-38763-vlf1wx clean

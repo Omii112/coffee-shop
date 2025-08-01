@@ -1,0 +1,19 @@
+current directory: /home/yeab/Desktop/fev-hos/backend/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+/usr/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/yeab/Desktop/fev-hos/backend/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250801-38763-5g7308 sitelibdir\=./.gem.20250801-38763-5g7308 clean
+
+current directory: /home/yeab/Desktop/fev-hos/backend/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250801-38763-5g7308 sitelibdir\=./.gem.20250801-38763-5g7308
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/yeab/Desktop/fev-hos/backend/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250801-38763-5g7308 sitelibdir\=./.gem.20250801-38763-5g7308 install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20250801-38763-5g7308/debug
+
+current directory: /home/yeab/Desktop/fev-hos/backend/vendor/bundle/ruby/3.4.0/gems/debug-1.11.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20250801-38763-5g7308 sitelibdir\=./.gem.20250801-38763-5g7308 clean
