@@ -92,11 +92,11 @@ class Api::Admin::OrdersController < ApplicationController
   end
 
   def order_params
-    params.permit(:status, order: [:status]).tap do |permitted_params|
-      # Handle both root level and nested status parameter
-      if params[:order] && params[:order][:status]
-        permitted_params[:status] = params[:order][:status]
-      end
+    # Handle both root level and nested status parameter
+    if params[:order] && params[:order][:status]
+      { status: params[:order][:status] }
+    else
+      params.permit(:status)
     end
   end
 end 
