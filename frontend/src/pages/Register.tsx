@@ -49,7 +49,9 @@ const Register = () => {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        address: formData.address
+        address: formData.address,
+        password: formData.password,
+        password_confirmation: formData.confirmPassword
       });
       
       if (success) {
