@@ -8,7 +8,11 @@ import { Navigate } from 'react-router-dom';
 import AdminLayout from '@/components/AdminLayout';
 
 const AdminDashboard = () => {
-  const { isAdmin } = useAuth();
+  const { isAdmin, loading } = useAuth();
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
 
   if (!isAdmin) {
     return <Navigate to="/" replace />;

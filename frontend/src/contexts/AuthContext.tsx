@@ -28,6 +28,7 @@ interface AuthResponse {
 
 interface AuthContextType {
   user: User | null;
+  loading: boolean;
   login: (email: string, password: string) => Promise<{ success: boolean; user?: User }>;
   register: (userData: Omit<User, 'id' | 'isAdmin' | 'rewardPoints' | 'memberSince'> & { password: string; password_confirmation: string }) => Promise<boolean>;
   logout: () => void;
@@ -41,6 +42,7 @@ const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Check if user is already logged in
@@ -66,6 +68,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     } catch (error) {
       console.error('Failed to load user:', error);
       apiService.clearToken();
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -164,6 +168,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   return (
     <AuthContext.Provider value={{
       user,
+      loading,
       login,
       register,
       logout,

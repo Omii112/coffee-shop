@@ -11,9 +11,13 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
 
 const AdminOrders = () => {
-  const { isAdmin } = useAuth();
+  const { isAdmin, loading } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
 
   if (!isAdmin) {
     return <Navigate to="/" replace />;
