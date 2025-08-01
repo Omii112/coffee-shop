@@ -50,10 +50,13 @@ const CartItemModal: React.FC<CartItemModalProps> = ({ item, isOpen, onClose, on
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-md">
+      <DialogContent className="max-w-md" aria-describedby="cart-item-description">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold text-amber-900">{item.name}</DialogTitle>
         </DialogHeader>
+        <div id="cart-item-description" className="sr-only">
+          Add item to cart with size, customizations, and quantity options
+        </div>
 
         <div className="space-y-6">
           <img

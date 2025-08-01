@@ -9,10 +9,23 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
 import { apiService } from '@/services/api';
 
+interface Customer {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  rewardPoints: number;
+  memberSince: string;
+  tier: string;
+  totalOrders: number;
+  total_spent: number;
+}
+
 const AdminCustomers = () => {
   const { isAdmin, loading } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
-  const [customers, setCustomers] = useState<any[]>([]);
+  const [customers, setCustomers] = useState<Customer[]>([]);
   const [customersLoading, setCustomersLoading] = useState(true);
 
   useEffect(() => {
@@ -24,7 +37,7 @@ const AdminCustomers = () => {
   const loadCustomers = async () => {
     try {
       setCustomersLoading(true);
-      const customersData = await apiService.getAllUsers() as any[];
+      const customersData = await apiService.getAllUsers() as Customer[];
       setCustomers(customersData);
     } catch (error) {
       console.error('Failed to load customers:', error);
@@ -131,7 +144,7 @@ const AdminCustomers = () => {
                       <div className="text-xs text-gray-600">Orders</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-lg font-bold text-amber-900">${Number(customer.totalSpent).toFixed(2)}</div>
+                      <div className="text-lg font-bold text-amber-900">${Number(customer.total_spent || 0).toFixed(2)}</div>
                       <div className="text-xs text-gray-600">Total Spent</div>
                     </div>
                     <div className="text-center">

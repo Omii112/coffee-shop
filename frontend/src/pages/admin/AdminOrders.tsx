@@ -464,8 +464,8 @@ const AdminOrders = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold">Order Information</h4>
-                    <p>Date: {new Date(selectedOrder.order_date).toLocaleString()}</p>
-                    <p>Status: <Badge className={getStatusColor(selectedOrder.status)}>{selectedOrder.status}</Badge></p>
+                    <div>Date: {new Date(selectedOrder.order_date).toLocaleString()}</div>
+                    <div>Status: <Badge className={getStatusColor(selectedOrder.status)}>{selectedOrder.status}</Badge></div>
                   </div>
                 </div>
                 
@@ -510,8 +510,8 @@ const AdminOrders = () => {
             </div>
             {selectedOrder && (
               <div className="space-y-4">
-                <p>Current Status: <Badge className={getStatusColor(selectedOrder.status)}>{selectedOrder.status}</Badge></p>
-                <p>New Status: <Badge className={getStatusColor(getNextStatus(selectedOrder.status))}>{getNextStatus(selectedOrder.status)}</Badge></p>
+                <div>Current Status: <Badge className={getStatusColor(selectedOrder.status)}>{selectedOrder.status}</Badge></div>
+                <div>New Status: <Badge className={getStatusColor(getNextStatus(selectedOrder.status))}>{getNextStatus(selectedOrder.status)}</Badge></div>
                 <div className="flex justify-end gap-2">
                   <Button variant="outline" onClick={() => setIsStatusUpdateOpen(false)}>
                     Cancel
