@@ -168,7 +168,7 @@ const Orders = () => {
                       </div>
                       <div className="text-right">
                         <div className="text-xl font-bold text-amber-600">
-                          ${order.total.toFixed(2)}
+                          ${Number(order.total).toFixed(2)}
                         </div>
                         <Badge className={`mt-2 ${getStatusColor(order.status)}`}>
                           {getStatusIcon(order.status)}
@@ -197,7 +197,7 @@ const Orders = () => {
                             </div>
                           </div>
                           <div className="text-right">
-                            <div className="font-semibold">${(item.price * item.quantity).toFixed(2)}</div>
+                            <div className="font-semibold">${(Number(item.price) * item.quantity).toFixed(2)}</div>
                           </div>
                         </div>
                       ))}

@@ -73,7 +73,7 @@ const MenuItemModal: React.FC<MenuItemModalProps> = ({ item, isOpen, onClose, on
                     <Label htmlFor={size.name} className="flex-1 cursor-pointer">
                       <div className="flex justify-between">
                         <span>{size.name}</span>
-                        <span className="font-semibold">${size.price.toFixed(2)}</span>
+                        <span className="font-semibold">${Number(size.price).toFixed(2)}</span>
                       </div>
                     </Label>
                   </div>
@@ -129,7 +129,7 @@ const MenuItemModal: React.FC<MenuItemModalProps> = ({ item, isOpen, onClose, on
             <div className="flex justify-between items-center mb-4">
               <span className="text-lg font-semibold">Total:</span>
               <span className="text-xl font-bold text-amber-600">
-                ${(getCurrentPrice() * quantity).toFixed(2)}
+                ${(Number(getCurrentPrice()) * quantity).toFixed(2)}
               </span>
             </div>
             
@@ -137,7 +137,7 @@ const MenuItemModal: React.FC<MenuItemModalProps> = ({ item, isOpen, onClose, on
               onClick={handleAddToCart}
               className="w-full bg-amber-600 hover:bg-amber-700"
             >
-              Add to Cart - ${(getCurrentPrice() * quantity).toFixed(2)}
+                              Add to Cart - ${(Number(getCurrentPrice()) * quantity).toFixed(2)}
             </Button>
           </div>
         </div>

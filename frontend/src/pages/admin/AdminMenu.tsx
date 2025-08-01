@@ -124,7 +124,7 @@ const AdminMenu = () => {
                   
                   <div className="flex justify-between items-center">
                     <span className="text-xl font-bold text-amber-900">
-                      ${item.price.toFixed(2)}
+                      ${Number(item.price).toFixed(2)}
                     </span>
                     
                     <div className="flex gap-2">

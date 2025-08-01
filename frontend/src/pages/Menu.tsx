@@ -177,7 +177,7 @@ const Menu = () => {
                   </p>
                   <div className="flex items-center justify-between">
                     <span className="text-lg font-bold text-amber-600">
-                      ${item.price.toFixed(2)}
+                      ${Number(item.price).toFixed(2)}
                     </span>
                     <Button size="sm" className="bg-amber-600 hover:bg-amber-700">
                       Add to Cart

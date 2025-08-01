@@ -162,14 +162,14 @@ const AdminOrders = () => {
                     {order.items.map((item, idx) => (
                       <div key={idx} className="flex justify-between items-center">
                         <span>{item.quantity}x {item.name}</span>
-                        <span className="font-semibold">${item.price.toFixed(2)}</span>
+                        <span className="font-semibold">${Number(item.price).toFixed(2)}</span>
                       </div>
                     ))}
                   </div>
                   
                   <div className="flex justify-between items-center border-t pt-4">
                     <div className="font-bold text-lg">
-                      Total: <span className="text-amber-900">${order.total.toFixed(2)}</span>
+                      Total: <span className="text-amber-900">${Number(order.total).toFixed(2)}</span>
                     </div>
                     
                     <div className="flex gap-2">

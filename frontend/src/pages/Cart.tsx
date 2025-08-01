@@ -102,7 +102,7 @@ const Cart = () => {
                           </p>
                         )}
                         <p className="text-lg font-bold text-amber-900">
-                          ${item.price.toFixed(2)}
+                          ${Number(item.price).toFixed(2)}
                         </p>
                       </div>
                       
@@ -151,16 +151,16 @@ const Cart = () => {
                 <div className="space-y-2 mb-4">
                   <div className="flex justify-between">
                     <span>Subtotal</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span>${Number(total).toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Tax</span>
-                    <span>${(total * 0.08).toFixed(2)}</span>
+                    <span>${(Number(total) * 0.08).toFixed(2)}</span>
                   </div>
                   <div className="border-t pt-2">
                     <div className="flex justify-between font-bold text-lg">
                       <span>Total</span>
-                      <span>${(total * 1.08).toFixed(2)}</span>
+                      <span>${(Number(total) * 1.08).toFixed(2)}</span>
                     </div>
                   </div>
                 </div>

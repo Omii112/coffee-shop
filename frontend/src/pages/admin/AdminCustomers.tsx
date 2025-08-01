@@ -146,7 +146,7 @@ const AdminCustomers = () => {
                       <div className="text-xs text-gray-600">Orders</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-lg font-bold text-amber-900">${customer.totalSpent.toFixed(2)}</div>
+                      <div className="text-lg font-bold text-amber-900">${Number(customer.totalSpent).toFixed(2)}</div>
                       <div className="text-xs text-gray-600">Total Spent</div>
                     </div>
                     <div className="text-center">
