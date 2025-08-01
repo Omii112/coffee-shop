@@ -13,7 +13,7 @@ class Order < ApplicationRecord
   scope :by_status, ->(status) { where(status: status) }
   
   def add_item(menu_item, quantity: 1, size: nil, customizations: [])
-    order_items.create!(
+    order_items.build(
       menu_item: menu_item,
       quantity: quantity,
       price: menu_item.price,

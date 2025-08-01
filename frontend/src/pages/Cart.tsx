@@ -110,7 +110,7 @@ const Cart = () => {
                         <Button
                           variant="outline"
                           size="sm"
-                          onClick={() => updateQuantity(`${item.id}-${index}`, item.quantity - 1)}
+                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
                         >
                           <Minus className="h-4 w-4" />
                         </Button>
@@ -118,7 +118,7 @@ const Cart = () => {
                         <Button
                           variant="outline"
                           size="sm"
-                          onClick={() => updateQuantity(`${item.id}-${index}`, item.quantity + 1)}
+                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
                         >
                           <Plus className="h-4 w-4" />
                         </Button>
@@ -127,7 +127,7 @@ const Cart = () => {
                       <Button
                         variant="ghost"
                         size="sm"
-                        onClick={() => removeItem(`${item.id}-${index}`)}
+                        onClick={() => removeItem(item.id)}
                         className="text-red-500 hover:text-red-700"
                       >
                         <Trash2 className="h-4 w-4" />
