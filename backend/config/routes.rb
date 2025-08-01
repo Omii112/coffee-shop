@@ -25,15 +25,19 @@ Rails.application.routes.draw do
       end
     end
     
-    # Admin routes
-    namespace :admin do
-      resources :users, only: [:index, :show, :update] do
-        member do
-          patch :add_reward_points
-        end
-      end
-      resources :menu_items, only: [:index, :create, :update, :destroy]
-      resources :orders, only: [:index, :show, :update]
-    end
+                  # Admin routes
+              namespace :admin do
+                resources :users, only: [:index, :show, :update] do
+                  member do
+                    patch :add_reward_points
+                  end
+                end
+                resources :menu_items, only: [:index, :create, :update, :destroy]
+                resources :orders, only: [:index, :show, :update] do
+                  collection do
+                    get :analytics
+                  end
+                end
+              end
   end
 end
