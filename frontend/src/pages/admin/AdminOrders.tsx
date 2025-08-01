@@ -194,7 +194,7 @@ const AdminOrders = () => {
   const stats = [
     {
       title: 'Total Revenue',
-      value: `$${analytics?.total_revenue?.toFixed(2) || '0.00'}`,
+      value: `$${Number(analytics?.total_revenue || 0).toFixed(2)}`,
       icon: DollarSign,
       color: 'text-green-600',
       bgColor: 'bg-green-100'
@@ -346,9 +346,9 @@ const AdminOrders = () => {
                         </div>
                         
                         <div className="flex justify-between items-center border-t pt-4">
-                          <div className="font-bold text-lg">
-                            Total: <span className="text-amber-900">${Number(order.total).toFixed(2)}</span>
-                          </div>
+                                              <div className="font-bold text-lg">
+                      Total: <span className="text-amber-900">${Number(order.total || 0).toFixed(2)}</span>
+                    </div>
                           
                           <div className="flex gap-2">
                             <Button
@@ -400,12 +400,12 @@ const AdminOrders = () => {
                             <p className="font-semibold">Order #{order.id}</p>
                             <p className="text-sm text-gray-600">{order.user.name}</p>
                           </div>
-                          <div className="text-right">
-                            <p className="font-semibold">${Number(order.total).toFixed(2)}</p>
-                            <Badge className={getStatusColor(order.status)}>
-                              {order.status}
-                            </Badge>
-                          </div>
+                                                     <div className="text-right">
+                             <p className="font-semibold">${Number(order.total || 0).toFixed(2)}</p>
+                             <Badge className={getStatusColor(order.status)}>
+                               {order.status}
+                             </Badge>
+                           </div>
                         </div>
                       ))}
                     </div>
@@ -430,11 +430,11 @@ const AdminOrders = () => {
                               <p className="text-sm text-gray-600">{customer.email}</p>
                             </div>
                           </div>
-                          <div className="text-right">
-                            <p className="font-semibold text-green-600">
-                              ${Number(customer.total_spent).toFixed(2)}
-                            </p>
-                          </div>
+                                                     <div className="text-right">
+                             <p className="font-semibold text-green-600">
+                               ${Number(customer.total_spent || 0).toFixed(2)}
+                             </p>
+                           </div>
                         </div>
                       ))}
                     </div>
@@ -485,12 +485,12 @@ const AdminOrders = () => {
                   </div>
                 </div>
                 
-                <div className="border-t pt-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-lg font-bold">Total:</span>
-                    <span className="text-xl font-bold text-amber-900">${Number(selectedOrder.total).toFixed(2)}</span>
-                  </div>
-                </div>
+                                   <div className="border-t pt-4">
+                     <div className="flex justify-between items-center">
+                       <span className="text-lg font-bold">Total:</span>
+                       <span className="text-xl font-bold text-amber-900">${Number(selectedOrder.total || 0).toFixed(2)}</span>
+                     </div>
+                   </div>
               </div>
             )}
           </DialogContent>

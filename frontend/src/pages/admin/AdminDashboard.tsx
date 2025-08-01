@@ -73,7 +73,7 @@ const AdminDashboard = () => {
   const stats = [
     {
       title: 'Total Revenue',
-      value: `$${analytics?.total_revenue?.toFixed(2) || '0.00'}`,
+      value: `$${Number(analytics?.total_revenue || 0).toFixed(2)}`,
       change: '+12%',
       icon: DollarSign,
       color: 'text-green-600',
@@ -106,9 +106,9 @@ const AdminDashboard = () => {
   ];
 
   const orderStatusData = [
-    { name: 'Pending', value: analytics?.pending_orders || 0, color: '#f59e0b' },
-    { name: 'Preparing', value: analytics?.ready_orders || 0, color: '#3b82f6' },
-    { name: 'Delivered', value: analytics?.delivered_orders || 0, color: '#10b981' }
+    { name: 'Pending', value: Number(analytics?.pending_orders || 0), color: '#f59e0b' },
+    { name: 'Preparing', value: Number(analytics?.ready_orders || 0), color: '#3b82f6' },
+    { name: 'Delivered', value: Number(analytics?.delivered_orders || 0), color: '#10b981' }
   ];
 
   const formatMonth = (monthStr: string) => {
@@ -119,12 +119,12 @@ const AdminDashboard = () => {
 
   const formattedSalesData = analytics?.monthly_sales.map(item => ({
     month: formatMonth(item.month),
-    sales: item.sales
+    sales: Number(item.sales)
   })) || [];
 
   const formattedOrdersData = analytics?.monthly_orders.map(item => ({
     month: formatMonth(item.month),
-    orders: item.orders
+    orders: Number(item.orders)
   })) || [];
 
   return (
@@ -270,7 +270,7 @@ const AdminDashboard = () => {
                         <p className="text-sm text-gray-600">{order.user.name}</p>
                       </div>
                       <div className="text-right">
-                        <p className="font-semibold">${Number(order.total).toFixed(2)}</p>
+                                                 <p className="font-semibold">${Number(order.total || 0).toFixed(2)}</p>
                         <p className="text-sm text-gray-500 capitalize">{order.status}</p>
                       </div>
                     </div>
@@ -303,9 +303,9 @@ const AdminDashboard = () => {
                       <p className="text-sm text-gray-600">{customer.email}</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-semibold text-green-600">
-                        ${Number(customer.total_spent).toFixed(2)}
-                      </p>
+                                                   <p className="font-semibold text-green-600">
+                               ${Number(customer.total_spent || 0).toFixed(2)}
+                             </p>
                     </div>
                   </div>
                 ))}
