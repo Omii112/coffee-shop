@@ -24,15 +24,19 @@ class Api::OrdersController < ApplicationController
     # Add items from cart first
     params[:items].each do |item_data|
       menu_item = MenuItem.find(item_data[:menu_item_id])
-      order.add_item(menu_item, 
+      order_item = order.add_item(menu_item, 
         quantity: item_data[:quantity], 
         size: item_data[:size], 
         customizations: item_data[:customizations] || []
       )
+      Rails.logger.info "Added item: #{order_item.inspect}"
     end
     
     # Calculate total before saving
     order.calculate_total
+    Rails.logger.info "Order total: #{order.total}"
+    Rails.logger.info "Order valid? #{order.valid?}"
+    Rails.logger.info "Order errors: #{order.errors.full_messages}" unless order.valid?
     
     if order.save
       # Add reward points
@@ -44,6 +48,7 @@ class Api::OrdersController < ApplicationController
         points_earned: points_earned
       }, status: :created
     else
+      Rails.logger.error "Order validation failed: #{order.errors.full_messages}"
       render json: { errors: order.errors.full_messages }, status: :unprocessable_entity
     end
   end
