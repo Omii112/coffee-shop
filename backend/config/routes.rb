@@ -32,6 +32,8 @@ Rails.application.routes.draw do
           patch :add_reward_points
         end
       end
+      resources :menu_items, only: [:index, :create, :update, :destroy]
+      resources :orders, only: [:index, :show, :update]
     end
   end
 end

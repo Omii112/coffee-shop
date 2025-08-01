@@ -35,12 +35,23 @@ const AdminMenu = () => {
   const loadMenuItems = async () => {
     try {
       setLoading(true);
-      const items = await apiService.getMenuItems() as MenuItem[];
+      const items = await apiService.getAdminMenuItems() as MenuItem[];
       setMenuItems(items);
     } catch (error) {
       console.error('Failed to load menu items:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDeleteItem = async (id: number) => {
+    if (window.confirm('Are you sure you want to delete this menu item?')) {
+      try {
+        await apiService.deleteMenuItem(id.toString());
+        await loadMenuItems(); // Reload the list
+      } catch (error) {
+        console.error('Failed to delete menu item:', error);
+      }
     }
   };
 
@@ -131,7 +142,12 @@ const AdminMenu = () => {
                       <Button variant="outline" size="sm">
                         <Edit2 className="h-4 w-4" />
                       </Button>
-                      <Button variant="outline" size="sm" className="text-red-500 hover:text-red-700">
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="text-red-500 hover:text-red-700"
+                        onClick={() => handleDeleteItem(item.id)}
+                      >
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </div>

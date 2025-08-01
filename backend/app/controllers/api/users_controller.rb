@@ -28,8 +28,8 @@ class Api::UsersController < ApplicationController
   def index
     return render json: { error: 'Unauthorized' }, status: :unauthorized unless current_user.is_admin?
     
-    users = User.all
-    render json: users
+    users = User.all.includes(:orders)
+    render json: users.as_json(include: { orders: { only: [:id, :total, :status, :order_date] } })
   end
 
   def admin_show

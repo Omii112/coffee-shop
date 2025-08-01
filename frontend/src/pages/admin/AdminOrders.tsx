@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Clock, CheckCircle, Package, Search, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,11 +9,32 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import AdminLayout from '@/components/AdminLayout';
 import { useAuth } from '@/contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
+import { apiService } from '@/services/api';
 
 const AdminOrders = () => {
   const { isAdmin, loading } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [orders, setOrders] = useState<any[]>([]);
+  const [ordersLoading, setOrdersLoading] = useState(true);
+
+  useEffect(() => {
+    if (isAdmin) {
+      loadOrders();
+    }
+  }, [isAdmin]);
+
+  const loadOrders = async () => {
+    try {
+      setOrdersLoading(true);
+      const ordersData = await apiService.getAdminOrders() as any[];
+      setOrders(ordersData);
+    } catch (error) {
+      console.error('Failed to load orders:', error);
+    } finally {
+      setOrdersLoading(false);
+    }
+  };
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
@@ -22,46 +43,6 @@ const AdminOrders = () => {
   if (!isAdmin) {
     return <Navigate to="/" replace />;
   }
-
-  // Mock orders data
-  const orders = [
-    {
-      id: 'ORD-001',
-      customerName: 'John Doe',
-      customerEmail: 'john@example.com',
-      date: '2024-01-15T10:30:00',
-      status: 'preparing',
-      total: 12.50,
-      items: [
-        { name: 'Cappuccino', quantity: 1, price: 4.50 },
-        { name: 'Croissant', quantity: 2, price: 4.00 }
-      ]
-    },
-    {
-      id: 'ORD-002',
-      customerName: 'Jane Smith',
-      customerEmail: 'jane@example.com',
-      date: '2024-01-15T11:15:00',
-      status: 'ready',
-      total: 8.75,
-      items: [
-        { name: 'Latte', quantity: 1, price: 5.00 },
-        { name: 'Blueberry Muffin', quantity: 1, price: 3.75 }
-      ]
-    },
-    {
-      id: 'ORD-003',
-      customerName: 'Mike Johnson',
-      customerEmail: 'mike@example.com',
-      date: '2024-01-15T09:45:00',
-      status: 'delivered',
-      total: 15.25,
-      items: [
-        { name: 'Americano', quantity: 2, price: 7.00 },
-        { name: 'Turkey Club', quantity: 1, price: 8.25 }
-      ]
-    }
-  ];
 
   const getStatusIcon = (status: string) => {
     switch (status) {
@@ -89,9 +70,13 @@ const AdminOrders = () => {
     }
   };
 
-  const updateOrderStatus = (orderId: string, newStatus: string) => {
-    console.log(`Updating order ${orderId} to ${newStatus}`);
-    // In a real app, this would update the order in the database
+  const updateOrderStatus = async (orderId: string, newStatus: string) => {
+    try {
+      await apiService.updateAdminOrderStatus(orderId, newStatus);
+      await loadOrders(); // Reload the orders
+    } catch (error) {
+      console.error('Failed to update order status:', error);
+    }
   };
 
   const filteredOrders = orders.filter(order => {

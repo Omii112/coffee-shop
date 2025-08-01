@@ -151,6 +151,65 @@ class ApiService {
       body: JSON.stringify(userData),
     });
   }
+
+  // Admin Menu Items
+  async getAdminMenuItems() {
+    return this.request('/admin/menu_items');
+  }
+
+  async createMenuItem(menuItem: {
+    name: string;
+    description: string;
+    price: number;
+    image: string;
+    category: string;
+    sizes?: Array<{ name: string; price: number }>;
+    customizations?: string[];
+    popular?: boolean;
+  }) {
+    return this.request('/admin/menu_items', {
+      method: 'POST',
+      body: JSON.stringify(menuItem),
+    });
+  }
+
+  async updateMenuItem(id: string, menuItem: {
+    name?: string;
+    description?: string;
+    price?: number;
+    image?: string;
+    category?: string;
+    sizes?: Array<{ name: string; price: number }>;
+    customizations?: string[];
+    popular?: boolean;
+  }) {
+    return this.request(`/admin/menu_items/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(menuItem),
+    });
+  }
+
+  async deleteMenuItem(id: string) {
+    return this.request(`/admin/menu_items/${id}`, {
+      method: 'DELETE',
+    });
+  }
+
+  // Admin Orders
+  async getAdminOrders() {
+    return this.request('/admin/orders');
+  }
+
+  async getAdminOrder(id: string) {
+    return this.request(`/admin/orders/${id}`);
+  }
+
+  async updateAdminOrderStatus(id: string, status: string) {
+    return this.request(`/admin/orders/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ status }),
+    });
+  }
 }
 
 export const apiService = new ApiService(); 

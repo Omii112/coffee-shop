@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Mail, Phone, MapPin, Star, Calendar } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -7,54 +7,39 @@ import { Badge } from '@/components/ui/badge';
 import AdminLayout from '@/components/AdminLayout';
 import { useAuth } from '@/contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
+import { apiService } from '@/services/api';
 
 const AdminCustomers = () => {
-  const { isAdmin } = useAuth();
+  const { isAdmin, loading } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
+  const [customers, setCustomers] = useState<any[]>([]);
+  const [customersLoading, setCustomersLoading] = useState(true);
+
+  useEffect(() => {
+    if (isAdmin) {
+      loadCustomers();
+    }
+  }, [isAdmin]);
+
+  const loadCustomers = async () => {
+    try {
+      setCustomersLoading(true);
+      const customersData = await apiService.getAllUsers() as any[];
+      setCustomers(customersData);
+    } catch (error) {
+      console.error('Failed to load customers:', error);
+    } finally {
+      setCustomersLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
 
   if (!isAdmin) {
     return <Navigate to="/" replace />;
   }
-
-  // Mock customers data
-  const customers = [
-    {
-      id: '1',
-      name: 'John Doe',
-      email: 'john@example.com',
-      phone: '+1234567890',
-      address: '123 Main St, City, State',
-      rewardPoints: 150,
-      totalOrders: 12,
-      totalSpent: 156.75,
-      memberSince: '2023-01-15',
-      tier: 'Silver'
-    },
-    {
-      id: '2',
-      name: 'Jane Smith',
-      email: 'jane@example.com',
-      phone: '+1234567891',
-      address: '456 Oak Ave, City, State',
-      rewardPoints: 320,
-      totalOrders: 28,
-      totalSpent: 342.50,
-      memberSince: '2022-08-22',
-      tier: 'Gold'
-    },
-    {
-      id: '3',
-      name: 'Mike Johnson',
-      email: 'mike@example.com',
-      phone: '+1234567892',
-      address: '789 Pine St, City, State',
-      rewardPoints: 75,
-      totalOrders: 6,
-      totalSpent: 78.25,
-      memberSince: '2023-11-10',
-      tier: 'Bronze'
-    }
-  ];
 
   const getTierColor = (tier: string) => {
     switch (tier) {
