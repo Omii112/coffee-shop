@@ -12,10 +12,24 @@ interface User {
   memberSince: Date;
 }
 
+interface AuthResponse {
+  token: string;
+  user: {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    address: string;
+    is_admin: boolean;
+    reward_points: number;
+    member_since: string;
+  };
+}
+
 interface AuthContextType {
   user: User | null;
   login: (email: string, password: string) => Promise<boolean>;
-  register: (userData: Omit<User, 'id' | 'isAdmin' | 'rewardPoints' | 'memberSince'>) => Promise<boolean>;
+  register: (userData: Omit<User, 'id' | 'isAdmin' | 'rewardPoints' | 'memberSince'> & { password: string; password_confirmation: string }) => Promise<boolean>;
   logout: () => void;
   updateProfile: (userData: Partial<User>) => void;
   addRewardPoints: (points: number) => void;
@@ -38,7 +52,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const loadCurrentUser = async () => {
     try {
-      const userData = await apiService.getCurrentUser();
+      const userData = await apiService.getCurrentUser() as any;
       setUser({
         id: userData.id.toString(),
         name: userData.name,
@@ -57,7 +71,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
-      const response = await apiService.login(email, password);
+      const response = await apiService.login(email, password) as AuthResponse;
       apiService.setToken(response.token);
       
       setUser({
@@ -78,16 +92,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const register = async (userData: Omit<User, 'id' | 'isAdmin' | 'rewardPoints' | 'memberSince'>): Promise<boolean> => {
+  const register = async (userData: Omit<User, 'id' | 'isAdmin' | 'rewardPoints' | 'memberSince'> & { password: string; password_confirmation: string }): Promise<boolean> => {
     try {
       const response = await apiService.register({
         name: userData.name,
         email: userData.email,
         phone: userData.phone,
         address: userData.address,
-        password: 'password123', // You might want to add password to the interface
-        password_confirmation: 'password123'
-      });
+        password: userData.password,
+        password_confirmation: userData.password_confirmation
+      }) as AuthResponse;
       
       apiService.setToken(response.token);
       
