@@ -13,7 +13,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -28,7 +28,13 @@ const Login = () => {
           title: "Welcome back!",
           description: "You have successfully logged in.",
         });
-        navigate('/');
+        
+        // Redirect based on user role
+        if (user?.isAdmin) {
+          navigate('/admin');
+        } else {
+          navigate('/');
+        }
       } else {
         toast({
           title: "Login failed",
