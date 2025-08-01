@@ -24,6 +24,7 @@ class Order < ApplicationRecord
   
   def calculate_total
     self.total = order_items.sum(&:subtotal)
+    self.order_date ||= Time.current
   end
   
   def subtotal
