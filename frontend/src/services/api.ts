@@ -215,6 +215,10 @@ class ApiService {
       body: JSON.stringify({ status }),
     });
   }
+
+  async getAdminAnalytics() {
+    return this.request('/admin/orders/analytics');
+  }
 }
 
 export const apiService = new ApiService(); 
