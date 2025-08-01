@@ -47,6 +47,6 @@ class Api::Admin::MenuItemsController < ApplicationController
   end
 
   def menu_item_params
-    params.permit(:name, :description, :price, :image, :category, :popular, sizes: [], customizations: [])
+    params.permit(:name, :description, :price, :image, :category, :popular, sizes: {}, customizations: [])
   end
 end 
