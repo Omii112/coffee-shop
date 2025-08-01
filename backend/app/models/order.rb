@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   has_many :menu_items, through: :order_items
   
   validates :total, presence: true, numericality: { greater_than: 0 }
-  validates :status, presence: true, inclusion: { in: %w[pending preparing ready completed cancelled] }
+  validates :status, presence: true, inclusion: { in: %w[pending preparing ready delivered completed cancelled] }
   validates :order_date, presence: true
   
   before_create :set_order_date
