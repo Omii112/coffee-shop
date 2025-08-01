@@ -2,6 +2,10 @@ class Api::UsersController < ApplicationController
   include Authenticatable
   skip_before_action :verify_authenticity_token
 
+  def me
+    render json: current_user
+  end
+
   def show
     render json: current_user
   end

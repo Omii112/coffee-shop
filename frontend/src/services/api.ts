@@ -119,7 +119,7 @@ class ApiService {
 
   // Users
   async getCurrentUser() {
-    return this.request('/users');
+    return this.request('/users/me');
   }
 
   async updateUser(userData: { name?: string; phone?: string; address?: string }) {

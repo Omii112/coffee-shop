@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :orders
     
     # Users routes (requires authentication)
+    get '/users/me', to: 'users#me'
     resources :users, only: [:show, :update] do
       member do
         patch :add_reward_points
