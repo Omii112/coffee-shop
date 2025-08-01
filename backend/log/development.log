@@ -160,3 +160,413 @@ ArgumentError (Before process_action callback :verify_authenticity_token has not
   
 app/controllers/api/menu_items_controller.rb:2:in '<class:MenuItemsController>'
 app/controllers/api/menu_items_controller.rb:1:in '<main>'
+Started POST "/api/auth/login" for 172.23.0.1 at 2025-08-01 21:30:36 +0000
+  
+ArgumentError (Before process_action callback :verify_authenticity_token has not been defined):
+  
+app/controllers/api/auth_controller.rb:2:in '<class:AuthController>'
+app/controllers/api/auth_controller.rb:1:in '<main>'
+Started POST "/api/auth/register" for 172.23.0.1 at 2025-08-01 21:31:17 +0000
+  
+ArgumentError (Before process_action callback :verify_authenticity_token has not been defined):
+  
+app/controllers/api/auth_controller.rb:2:in '<class:AuthController>'
+app/controllers/api/auth_controller.rb:1:in '<main>'
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@coffeeshop.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'john@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Espresso' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Cappuccino' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Latte' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Americano' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Earl Grey Tea' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Green Tea' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Croissant' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Blueberry Muffin' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.8ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Cinnamon Roll' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Turkey Club' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Grilled Cheese' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Chocolate Cake' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Cheesecake' LIMIT 1 /*application='Backend'*/[0m
+Started POST "/api/auth/register" for 172.23.0.1 at 2025-08-01 21:32:14 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by Api::AuthController#register as */*
+  Parameters: {"name" => "Test User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St", "auth" => {"name" => "Test User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St"}}
+[31mUnpermitted parameter: :auth. Context: { controller: Api::AuthController, action: register, request: #<ActionDispatch::Request:0x00007e011bed1ff8>, params: {"name" => "Test User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St", "controller" => "api/auth", "action" => "register", "auth" => {"name" => "Test User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St"}} }[0m
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mUser Exists? (12.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1 /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "address", "password_digest", "is_admin", "reward_points", "member_since", "created_at", "updated_at") VALUES ('Test User', 'test@example.com', '+1234567890', '123 Test St', '$2a$12$vfhavspzASXh4vY3/mP1OedGYSgongnvX.GxG2ga1CwV7swJuPdjG', 0, 0, '2025-08-01 21:32:14.706217', '2025-08-01 21:32:14.705701', '2025-08-01 21:32:14.705701') RETURNING "id" /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+Completed 201 Created in 291ms (Views: 0.5ms | ActiveRecord: 25.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/auth/register" for 172.23.0.1 at 2025-08-01 21:32:50 +0000
+Processing by Api::AuthController#register as */*
+  Parameters: {"name" => "Yeabsira", "email" => "[FILTERED]", "phone" => "0973333393", "address" => "Chad street", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "auth" => {"name" => "Yeabsira", "email" => "[FILTERED]", "phone" => "0973333393", "address" => "Chad street", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: Api::AuthController, action: register, request: #<ActionDispatch::Request:0x00007e01132f02a0>, params: {"name" => "Yeabsira", "email" => "[FILTERED]", "phone" => "0973333393", "address" => "Chad street", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "controller" => "api/auth", "action" => "register", "auth" => {"name" => "Yeabsira", "email" => "[FILTERED]", "phone" => "0973333393", "address" => "Chad street", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'yeabsirakayel101@gmail.com' LIMIT 1 /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "address", "password_digest", "is_admin", "reward_points", "member_since", "created_at", "updated_at") VALUES ('Yeabsira', 'yeabsirakayel101@gmail.com', '0973333393', 'Chad street', '$2a$12$fR0WHDF/R9ym/in5CoGktu1MbZSZ8TIJtywg.gjtMZRnYTghP.Zti', 0, 0, '2025-08-01 21:32:50.389445', '2025-08-01 21:32:50.389322', '2025-08-01 21:32:50.389322') RETURNING "id" /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+Completed 201 Created in 239ms (Views: 0.1ms | ActiveRecord: 2.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/menu_items" for 172.23.0.1 at 2025-08-01 21:32:57 +0000
+Processing by Api::MenuItemsController#index as */*
+  Parameters: {"menu_item" => {}}
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" /*action='index',application='Backend',controller='menu_items'*/[0m
+  ↳ app/controllers/api/menu_items_controller.rb:6:in 'Api::MenuItemsController#index'
+Completed 200 OK in 47ms (Views: 41.5ms | ActiveRecord: 1.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/menu_items" for 172.23.0.1 at 2025-08-01 21:33:28 +0000
+Processing by Api::MenuItemsController#index as */*
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" /*action='index',application='Backend',controller='menu_items'*/[0m
+  ↳ app/controllers/api/menu_items_controller.rb:6:in 'Api::MenuItemsController#index'
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/menu_items" for 172.23.0.1 at 2025-08-01 21:33:35 +0000
+Processing by Api::MenuItemsController#index as */*
+  Parameters: {"menu_item" => {}}
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" /*action='index',application='Backend',controller='menu_items'*/[0m
+  ↳ app/controllers/api/menu_items_controller.rb:6:in 'Api::MenuItemsController#index'
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/users" for 172.23.0.1 at 2025-08-01 21:33:35 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/users"):
+  
+Started GET "/api/menu_items" for 172.23.0.1 at 2025-08-01 21:33:35 +0000
+Processing by Api::MenuItemsController#index as */*
+  Parameters: {"menu_item" => {}}
+  [1m[36mMenuItem Load (0.2ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" /*action='index',application='Backend',controller='menu_items'*/[0m
+  ↳ app/controllers/api/menu_items_controller.rb:6:in 'Api::MenuItemsController#index'
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/menu_items" for 172.23.0.1 at 2025-08-01 21:35:28 +0000
+Processing by Api::MenuItemsController#index as */*
+  Parameters: {"menu_item" => {}}
+  [1m[36mMenuItem Load (3.7ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" /*action='index',application='Backend',controller='menu_items'*/[0m
+  ↳ app/controllers/api/menu_items_controller.rb:6:in 'Api::MenuItemsController#index'
+Completed 200 OK in 18ms (Views: 14.4ms | ActiveRecord: 3.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/menu_items" for 172.23.0.1 at 2025-08-01 21:35:35 +0000
+Processing by Api::MenuItemsController#index as */*
+  Parameters: {"menu_item" => {}}
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" /*action='index',application='Backend',controller='menu_items'*/[0m
+  ↳ app/controllers/api/menu_items_controller.rb:6:in 'Api::MenuItemsController#index'
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/menu_items" for 172.23.0.1 at 2025-08-01 21:35:46 +0000
+Processing by Api::MenuItemsController#index as */*
+  Parameters: {"menu_item" => {}}
+  [1m[36mMenuItem Load (1.6ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" /*action='index',application='Backend',controller='menu_items'*/[0m
+  ↳ app/controllers/api/menu_items_controller.rb:6:in 'Api::MenuItemsController#index'
+Completed 200 OK in 10ms (Views: 9.8ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/menu_items" for 172.23.0.1 at 2025-08-01 21:35:53 +0000
+Processing by Api::MenuItemsController#index as */*
+  Parameters: {"menu_item" => {}}
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" /*action='index',application='Backend',controller='menu_items'*/[0m
+  ↳ app/controllers/api/menu_items_controller.rb:6:in 'Api::MenuItemsController#index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/auth/login" for 172.23.0.1 at 2025-08-01 21:35:59 +0000
+Processing by Api::AuthController#login as */*
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]", "auth" => {"email" => "[FILTERED]", "password" => "[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'yeabsirakayel101@gmail.com' LIMIT 1 /*action='login',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:5:in 'Api::AuthController#login'
+Completed 401 Unauthorized in 208ms (Views: 0.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/auth/login" for 172.23.0.1 at 2025-08-01 21:36:25 +0000
+Processing by Api::AuthController#login as */*
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]", "auth" => {"email" => "[FILTERED]", "password" => "[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@coffeeshop.com' LIMIT 1 /*action='login',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:5:in 'Api::AuthController#login'
+Completed 200 OK in 205ms (Views: 0.4ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/auth/login" for 172.23.0.1 at 2025-08-01 21:36:28 +0000
+Processing by Api::AuthController#login as */*
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]", "auth" => {"email" => "[FILTERED]", "password" => "[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'john@example.com' LIMIT 1 /*action='login',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:5:in 'Api::AuthController#login'
+Completed 200 OK in 194ms (Views: 0.3ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/auth/register" for 172.23.0.1 at 2025-08-01 21:37:48 +0000
+Processing by Api::AuthController#register as */*
+  Parameters: {"name" => "Test User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St", "auth" => {"name" => "Test User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St"}}
+[31mUnpermitted parameter: :auth. Context: { controller: Api::AuthController, action: register, request: #<ActionDispatch::Request:0x00007e0112e62a80>, params: {"name" => "Test User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St", "controller" => "api/auth", "action" => "register", "auth" => {"name" => "Test User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1 /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+Completed 422 Unprocessable Content in 216ms (Views: 2.1ms | ActiveRecord: 1.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/auth/register" for 172.23.0.1 at 2025-08-01 21:37:56 +0000
+Processing by Api::AuthController#register as */*
+  Parameters: {"name" => "New User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St", "auth" => {"name" => "New User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St"}}
+[31mUnpermitted parameter: :auth. Context: { controller: Api::AuthController, action: register, request: #<ActionDispatch::Request:0x00007e0112dde9d8>, params: {"name" => "New User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St", "controller" => "api/auth", "action" => "register", "auth" => {"name" => "New User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'newuser@example.com' LIMIT 1 /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "address", "password_digest", "is_admin", "reward_points", "member_since", "created_at", "updated_at") VALUES ('New User', 'newuser@example.com', '+1234567890', '123 Test St', '$2a$12$WoZIiiji1i2CEHsGH6Y.HOFHAbpKJgJ/sNima8DvVX/t6iiQPR90m', 0, 0, '2025-08-01 21:37:56.733275', '2025-08-01 21:37:56.732936', '2025-08-01 21:37:56.732936') RETURNING "id" /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+Completed 201 Created in 210ms (Views: 0.9ms | ActiveRecord: 1.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/auth/login" for 172.23.0.1 at 2025-08-01 21:37:59 +0000
+Processing by Api::AuthController#login as */*
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]", "auth" => {"email" => "[FILTERED]", "password" => "[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'newuser@example.com' LIMIT 1 /*action='login',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:5:in 'Api::AuthController#login'
+Completed 200 OK in 197ms (Views: 0.1ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/auth/register" for 172.23.0.1 at 2025-08-01 21:38:03 +0000
+Processing by Api::AuthController#register as */*
+  Parameters: {"name" => "Yeab User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St", "auth" => {"name" => "Yeab User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St"}}
+[31mUnpermitted parameter: :auth. Context: { controller: Api::AuthController, action: register, request: #<ActionDispatch::Request:0x00007e0112d3e1b8>, params: {"name" => "Yeab User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St", "controller" => "api/auth", "action" => "register", "auth" => {"name" => "Yeab User", "email" => "[FILTERED]", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "phone" => "+1234567890", "address" => "123 Test St"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'yeabsirakayel101@gmail.com' LIMIT 1 /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+Completed 422 Unprocessable Content in 221ms (Views: 0.8ms | ActiveRecord: 2.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/auth/login" for 172.23.0.1 at 2025-08-01 21:38:13 +0000
+Processing by Api::AuthController#login as */*
+  Parameters: {"email" => "[FILTERED]", "password" => "[FILTERED]", "auth" => {"email" => "[FILTERED]", "password" => "[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'yeabsirakayel101@gmail.com' LIMIT 1 /*action='login',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:5:in 'Api::AuthController#login'
+Completed 401 Unauthorized in 193ms (Views: 0.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/auth/register" for 172.23.0.1 at 2025-08-01 21:38:19 +0000
+Processing by Api::AuthController#register as */*
+  Parameters: {"name" => "Yeabsira", "email" => "[FILTERED]", "phone" => "0973333393", "address" => "Chad street", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "auth" => {"name" => "Yeabsira", "email" => "[FILTERED]", "phone" => "0973333393", "address" => "Chad street", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]"}}
+[31mUnpermitted parameter: :auth. Context: { controller: Api::AuthController, action: register, request: #<ActionDispatch::Request:0x00007e011beadd60>, params: {"name" => "Yeabsira", "email" => "[FILTERED]", "phone" => "0973333393", "address" => "Chad street", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]", "controller" => "api/auth", "action" => "register", "auth" => {"name" => "Yeabsira", "email" => "[FILTERED]", "phone" => "0973333393", "address" => "Chad street", "password" => "[FILTERED]", "password_confirmation" => "[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'yeabsirakayel101@gmail.com' LIMIT 1 /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION /*action='register',application='Backend',controller='auth'*/[0m
+  ↳ app/controllers/api/auth_controller.rb:30:in 'Api::AuthController#register'
+Completed 422 Unprocessable Content in 207ms (Views: 0.2ms | ActiveRecord: 1.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@coffeeshop.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'john@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Espresso' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Cappuccino' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Latte' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Americano' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Earl Grey Tea' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Green Tea' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Croissant' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Blueberry Muffin' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.6ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Cinnamon Roll' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Turkey Club' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Grilled Cheese' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Chocolate Cake' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Cheesecake' LIMIT 1 /*application='Backend'*/[0m
+Started GET "/api/auth/list_users" for 172.23.0.1 at 2025-08-01 21:38:56 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  
+AbstractController::ActionNotFound (The action 'list_users' could not be found for Api::AuthController):
+  
+actionpack (8.0.2) lib/abstract_controller/base.rb:158:in 'AbstractController::Base#process'
+actionview (8.0.2) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (8.0.2) lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+actionpack (8.0.2) lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:67:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:53:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:133:in 'block in ActionDispatch::Journey::Router#find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in 'Array#each'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in 'ActionDispatch::Journey::Router#find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:34:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:908:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:68:in 'Rails::Engine::LazyRouteSet#call'
+rack (3.2.0) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.0) lib/rack/conditional_get.rb:31:in 'Rack::ConditionalGet#call'
+rack (3.2.0) lib/rack/head.rb:15:in 'Rack::Head#call'
+activerecord (8.0.2) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.0) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.0) lib/rack/sendfile.rb:114:in 'Rack::Sendfile#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in 'Rack::Cors#call'
+railties (8.0.2) lib/rails/engine.rb:535:in 'Rails::Engine#call'
+puma (6.6.1) lib/puma/configuration.rb:279:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (6.6.1) lib/puma/request.rb:99:in 'block in Puma::Request#handle_request'
+puma (6.6.1) lib/puma/thread_pool.rb:390:in 'Puma::ThreadPool#with_force_shutdown'
+puma (6.6.1) lib/puma/request.rb:98:in 'Puma::Request#handle_request'
+puma (6.6.1) lib/puma/server.rb:472:in 'Puma::Server#process_client'
+puma (6.6.1) lib/puma/server.rb:254:in 'block in Puma::Server#run'
+puma (6.6.1) lib/puma/thread_pool.rb:167:in 'block in Puma::ThreadPool#spawn_thread'
+Started POST "/api/auth/reset_password" for 172.23.0.1 at 2025-08-01 21:39:02 +0000
+  
+AbstractController::ActionNotFound (The action 'reset_password' could not be found for Api::AuthController):
+  
+actionpack (8.0.2) lib/abstract_controller/base.rb:158:in 'AbstractController::Base#process'
+actionview (8.0.2) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (8.0.2) lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+actionpack (8.0.2) lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:67:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:53:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:133:in 'block in ActionDispatch::Journey::Router#find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in 'Array#each'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in 'ActionDispatch::Journey::Router#find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:34:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:908:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:68:in 'Rails::Engine::LazyRouteSet#call'
+rack (3.2.0) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.0) lib/rack/conditional_get.rb:44:in 'Rack::ConditionalGet#call'
+rack (3.2.0) lib/rack/head.rb:15:in 'Rack::Head#call'
+activerecord (8.0.2) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.0) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.0) lib/rack/sendfile.rb:114:in 'Rack::Sendfile#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in 'Rack::Cors#call'
+railties (8.0.2) lib/rails/engine.rb:535:in 'Rails::Engine#call'
+puma (6.6.1) lib/puma/configuration.rb:279:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (6.6.1) lib/puma/request.rb:99:in 'block in Puma::Request#handle_request'
+puma (6.6.1) lib/puma/thread_pool.rb:390:in 'Puma::ThreadPool#with_force_shutdown'
+puma (6.6.1) lib/puma/request.rb:98:in 'Puma::Request#handle_request'
+puma (6.6.1) lib/puma/server.rb:472:in 'Puma::Server#process_client'
+puma (6.6.1) lib/puma/server.rb:254:in 'block in Puma::Server#run'
+puma (6.6.1) lib/puma/thread_pool.rb:167:in 'block in Puma::ThreadPool#spawn_thread'
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@coffeeshop.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'john@example.com' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.3ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Espresso' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Cappuccino' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Latte' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Americano' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Earl Grey Tea' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Green Tea' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.4ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Croissant' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Blueberry Muffin' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.5ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Cinnamon Roll' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Turkey Club' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Grilled Cheese' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.0ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Chocolate Cake' LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mMenuItem Load (0.1ms)[0m  [1m[34mSELECT "menu_items".* FROM "menu_items" WHERE "menu_items"."name" = 'Cheesecake' LIMIT 1 /*application='Backend'*/[0m
+Started POST "/api/auth/delete_user" for 172.23.0.1 at 2025-08-01 21:39:31 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  
+AbstractController::ActionNotFound (The action 'delete_user' could not be found for Api::AuthController):
+  
+actionpack (8.0.2) lib/abstract_controller/base.rb:158:in 'AbstractController::Base#process'
+actionview (8.0.2) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (8.0.2) lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+actionpack (8.0.2) lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:67:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:53:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:133:in 'block in ActionDispatch::Journey::Router#find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in 'Array#each'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in 'ActionDispatch::Journey::Router#find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:34:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:908:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:68:in 'Rails::Engine::LazyRouteSet#call'
+rack (3.2.0) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.0) lib/rack/conditional_get.rb:44:in 'Rack::ConditionalGet#call'
+rack (3.2.0) lib/rack/head.rb:15:in 'Rack::Head#call'
+activerecord (8.0.2) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.0) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.0) lib/rack/sendfile.rb:114:in 'Rack::Sendfile#call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in 'Rack::Cors#call'
+railties (8.0.2) lib/rails/engine.rb:535:in 'Rails::Engine#call'
+puma (6.6.1) lib/puma/configuration.rb:279:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (6.6.1) lib/puma/request.rb:99:in 'block in Puma::Request#handle_request'
+puma (6.6.1) lib/puma/thread_pool.rb:390:in 'Puma::ThreadPool#with_force_shutdown'
+puma (6.6.1) lib/puma/request.rb:98:in 'Puma::Request#handle_request'
+puma (6.6.1) lib/puma/server.rb:472:in 'Puma::Server#process_client'
+puma (6.6.1) lib/puma/server.rb:254:in 'block in Puma::Server#run'
+puma (6.6.1) lib/puma/thread_pool.rb:167:in 'block in Puma::ThreadPool#spawn_thread'

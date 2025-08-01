@@ -49,6 +49,23 @@ class Api::AuthController < ApplicationController
 
   private
 
+  # Temporary endpoint to list users (for debugging)
+  def list_users
+    users = User.all.map { |user| { id: user.id, name: user.name, email: user.email, is_admin: user.is_admin } }
+    render json: users
+  end
+
+  # Temporary endpoint to delete user (for debugging)
+  def delete_user
+    user = User.find_by(email: params[:email])
+    if user
+      user.destroy
+      render json: { message: 'User deleted successfully' }
+    else
+      render json: { error: 'User not found' }, status: :not_found
+    end
+  end
+
   def user_params
     params.permit(:name, :email, :phone, :address, :password, :password_confirmation)
   end

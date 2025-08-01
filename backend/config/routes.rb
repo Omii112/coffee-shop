@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     # Authentication routes
     post '/auth/login', to: 'auth#login'
     post '/auth/register', to: 'auth#register'
+    get '/auth/list_users', to: 'auth#list_users'
+    post '/auth/delete_user', to: 'auth#delete_user'
     
     # Menu items routes
     resources :menu_items do
