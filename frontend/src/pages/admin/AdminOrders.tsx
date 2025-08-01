@@ -165,7 +165,7 @@ const AdminOrders = () => {
                       {order.status === 'preparing' && (
                         <Button
                           size="sm"
-                          onClick={() => updateOrderStatus(order.id, 'ready')}
+                          onClick={() => updateOrderStatus(order.id.toString(), 'ready')}
                           className="bg-blue-600 hover:bg-blue-700"
                         >
                           Mark Ready
@@ -174,7 +174,7 @@ const AdminOrders = () => {
                       {order.status === 'ready' && (
                         <Button
                           size="sm"
-                          onClick={() => updateOrderStatus(order.id, 'delivered')}
+                          onClick={() => updateOrderStatus(order.id.toString(), 'delivered')}
                           className="bg-green-600 hover:bg-green-700"
                         >
                           Mark Delivered

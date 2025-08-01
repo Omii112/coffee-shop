@@ -9,6 +9,7 @@ import AdminLayout from '@/components/AdminLayout';
 import { useAuth } from '@/contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
 import { apiService } from '@/services/api';
+import MenuItemModal from '@/components/MenuItemModal';
 
 interface MenuItem {
   id: number;
@@ -27,6 +28,9 @@ const AdminMenu = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editingItem, setEditingItem] = useState<MenuItem | null>(null);
+  const [modalMode, setModalMode] = useState<'add' | 'edit'>('add');
 
   useEffect(() => {
     loadMenuItems();
@@ -53,6 +57,22 @@ const AdminMenu = () => {
         console.error('Failed to delete menu item:', error);
       }
     }
+  };
+
+  const handleAddItem = () => {
+    setModalMode('add');
+    setEditingItem(null);
+    setModalOpen(true);
+  };
+
+  const handleEditItem = (item: MenuItem) => {
+    setModalMode('edit');
+    setEditingItem(item);
+    setModalOpen(true);
+  };
+
+  const handleSaveItem = () => {
+    loadMenuItems(); // Reload the list after saving
   };
 
   if (!isAdmin) {
@@ -83,7 +103,7 @@ const AdminMenu = () => {
             <h1 className="text-3xl font-bold text-gray-900">Menu Management</h1>
             <p className="text-gray-600">Manage your coffee shop menu items</p>
           </div>
-          <Button className="bg-amber-600 hover:bg-amber-700">
+          <Button className="bg-amber-600 hover:bg-amber-700" onClick={handleAddItem}>
             <Plus className="h-4 w-4 mr-2" />
             Add Item
           </Button>
@@ -139,7 +159,11 @@ const AdminMenu = () => {
                     </span>
                     
                     <div className="flex gap-2">
-                      <Button variant="outline" size="sm">
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => handleEditItem(item)}
+                      >
                         <Edit2 className="h-4 w-4" />
                       </Button>
                       <Button 
@@ -158,6 +182,14 @@ const AdminMenu = () => {
           ))}
         </div>
       </div>
+
+      <MenuItemModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onSave={handleSaveItem}
+        menuItem={editingItem}
+        mode={modalMode}
+      />
     </AdminLayout>
   );
 };
