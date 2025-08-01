@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Navbar from '@/components/Navbar';
-import MenuItemModal from '@/components/MenuItemModal';
+import CartItemModal from '@/components/CartItemModal';
 import { useCart } from '@/contexts/CartContext';
 import { apiService } from '@/services/api';
 
@@ -199,7 +199,7 @@ const Menu = () => {
       </div>
 
       {selectedItem && (
-        <MenuItemModal
+        <CartItemModal
           item={selectedItem}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
