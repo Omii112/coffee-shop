@@ -19,21 +19,22 @@ class Api::OrdersController < ApplicationController
   end
 
   def create
-    order = current_user.orders.build(status: 'pending', total: 0)
+    order = current_user.orders.build(status: 'pending')
+    
+    # Add items from cart first
+    params[:items].each do |item_data|
+      menu_item = MenuItem.find(item_data[:menu_item_id])
+      order.add_item(menu_item, 
+        quantity: item_data[:quantity], 
+        size: item_data[:size], 
+        customizations: item_data[:customizations] || []
+      )
+    end
+    
+    # Calculate total before saving
+    order.calculate_total
     
     if order.save
-      # Add items from cart
-      params[:items].each do |item_data|
-        menu_item = MenuItem.find(item_data[:menu_item_id])
-        order.add_item(menu_item, 
-          quantity: item_data[:quantity], 
-          size: item_data[:size], 
-          customizations: item_data[:customizations] || []
-        )
-      end
-      
-      order.calculate_total
-      
       # Add reward points
       points_earned = order.total.floor
       current_user.add_reward_points(points_earned)
