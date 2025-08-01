@@ -47,6 +47,11 @@ class ApiService {
       throw new Error(error.error || `HTTP error! status: ${response.status}`);
     }
 
+    // Handle empty responses (like DELETE requests)
+    if (response.status === 204 || response.headers.get('content-length') === '0') {
+      return {} as T;
+    }
+
     return response.json();
   }
 

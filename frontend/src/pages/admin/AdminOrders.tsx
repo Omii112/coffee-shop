@@ -80,8 +80,8 @@ const AdminOrders = () => {
   };
 
   const filteredOrders = orders.filter(order => {
-    const matchesSearch = order.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         order.customerName.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = order.id.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         (order.user?.name || '').toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = statusFilter === 'all' || order.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
@@ -130,12 +130,12 @@ const AdminOrders = () => {
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle className="text-lg">Order {order.id}</CardTitle>
+                      <CardTitle className="text-lg">Order #{order.id}</CardTitle>
                       <p className="text-gray-600">
-                        {order.customerName} • {order.customerEmail}
+                        {order.user?.name} • {order.user?.email}
                       </p>
                       <p className="text-sm text-gray-500">
-                        {new Date(order.date).toLocaleString()}
+                        {new Date(order.order_date).toLocaleString()}
                       </p>
                     </div>
                     <div className="flex items-center gap-2">
@@ -148,9 +148,9 @@ const AdminOrders = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2 mb-4">
-                    {order.items.map((item, idx) => (
+                    {order.order_items?.map((item, idx) => (
                       <div key={idx} className="flex justify-between items-center">
-                        <span>{item.quantity}x {item.name}</span>
+                        <span>{item.quantity}x {item.menu_item?.name || 'Unknown Item'}</span>
                         <span className="font-semibold">${Number(item.price).toFixed(2)}</span>
                       </div>
                     ))}
