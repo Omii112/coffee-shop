@@ -447,10 +447,13 @@ const AdminOrders = () => {
 
         {/* Order Detail Modal */}
         <Dialog open={isOrderDetailOpen} onOpenChange={setIsOrderDetailOpen}>
-          <DialogContent className="max-w-2xl">
+          <DialogContent className="max-w-2xl" aria-describedby="order-detail-description">
             <DialogHeader>
               <DialogTitle>Order Details #{selectedOrder?.id}</DialogTitle>
             </DialogHeader>
+            <div id="order-detail-description" className="sr-only">
+              Detailed view of order information including customer details, items, and total
+            </div>
             {selectedOrder && (
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
@@ -498,10 +501,13 @@ const AdminOrders = () => {
 
         {/* Status Update Modal */}
         <Dialog open={isStatusUpdateOpen} onOpenChange={setIsStatusUpdateOpen}>
-          <DialogContent>
+          <DialogContent aria-describedby="status-update-description">
             <DialogHeader>
               <DialogTitle>Update Order Status</DialogTitle>
             </DialogHeader>
+            <div id="status-update-description" className="sr-only">
+              Confirm order status update from current status to next status
+            </div>
             {selectedOrder && (
               <div className="space-y-4">
                 <p>Current Status: <Badge className={getStatusColor(selectedOrder.status)}>{selectedOrder.status}</Badge></p>
