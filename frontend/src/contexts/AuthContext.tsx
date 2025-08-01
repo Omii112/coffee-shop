@@ -28,7 +28,7 @@ interface AuthResponse {
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string, password: string) => Promise<boolean>;
+  login: (email: string, password: string) => Promise<{ success: boolean; user?: User }>;
   register: (userData: Omit<User, 'id' | 'isAdmin' | 'rewardPoints' | 'memberSince'> & { password: string; password_confirmation: string }) => Promise<boolean>;
   logout: () => void;
   updateProfile: (userData: Partial<User>) => void;
@@ -69,12 +69,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const login = async (email: string, password: string): Promise<boolean> => {
+  const login = async (email: string, password: string): Promise<{ success: boolean; user?: User }> => {
     try {
       const response = await apiService.login(email, password) as AuthResponse;
       apiService.setToken(response.token);
       
-      setUser({
+      const userData = {
         id: response.user.id.toString(),
         name: response.user.name,
         email: response.user.email,
@@ -83,12 +83,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isAdmin: response.user.is_admin,
         rewardPoints: response.user.reward_points,
         memberSince: new Date(response.user.member_since)
-      });
+      };
       
-      return true;
+      setUser(userData);
+      
+      return { success: true, user: userData };
     } catch (error) {
       console.error('Login failed:', error);
-      return false;
+      return { success: false };
     }
   };
 

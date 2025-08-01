@@ -13,7 +13,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const { login, user } = useAuth();
+  const { login } = useAuth();
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -22,15 +22,15 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const success = await login(email, password);
-      if (success) {
+      const result = await login(email, password);
+      if (result.success && result.user) {
         toast({
           title: "Welcome back!",
           description: "You have successfully logged in.",
         });
         
         // Redirect based on user role
-        if (user?.isAdmin) {
+        if (result.user.isAdmin) {
           navigate('/admin');
         } else {
           navigate('/');
