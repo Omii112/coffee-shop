@@ -23,7 +23,7 @@ class Order < ApplicationRecord
   end
   
   def calculate_total
-    update(total: order_items.sum(&:subtotal))
+    self.total = order_items.sum(&:subtotal)
   end
   
   def subtotal
